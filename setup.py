@@ -18,5 +18,10 @@ setup(
     author_email='swinkels.pieter@yahoo.com',
     # url='home page of the project',
     license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+    packages=find_packages(exclude=('tests', 'docs')),
+    entry_points={
+        'console_scripts': [
+            'skempy-find-test=skempy.find_path:main',
+        ],
+    },
 )
