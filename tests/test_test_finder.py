@@ -18,7 +18,7 @@ class TestTestFinder(unittest.TestCase):
 
 class TestLineFinder(unittest.TestCase):
 
-    def test_a(self):
+    def test_find_method_by_cursor_position_in_body(self):
         f = open("tests/source_code.py")
         source_code = f.read()
         f.close()
