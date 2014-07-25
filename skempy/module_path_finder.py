@@ -3,7 +3,7 @@ import os
 class ModulePathFinder(object):
 
     def find_path(self, file_name):
-        module_path, extension = os.path.splitext(os.path.basename(file_name))
+    module_path, extension = os.path.splitext(os.path.basename(file_name))
         package_dir = os.path.dirname(file_name)
         packages = self.find_parent_packages(package_dir) + [module_path]
         return '.'.join(packages)
