@@ -2,18 +2,16 @@ import os
 
 class ModulePathFinder(object):
 
-    def find_path(self, file_name):
-    module_path, extension = os.path.splitext(os.path.basename(file_name))
-        package_dir = os.path.dirname(file_name)
-        packages = self.find_parent_packages(package_dir) + [module_path]
-        return '.'.join(packages)
+    def find_path(self, file_path):
+        directory, file_name = os.path.split(file_path)
+        module_name, _ = os.path.splitext(file_name)
+        return '.'.join(self.find_packages(directory) + [module_name])
 
-    def find_parent_packages(self, directory):
-        parent_packages = []
-        if self._is_package(directory):
-            package_head, package_tail = os.path.split(directory)
-            parent_packages = self.find_parent_packages(package_head) + [package_tail]
-        return parent_packages
+    def find_packages(self, directory):
+        if not self._is_package(directory):
+            return []
+        parent_directory, package_name = os.path.split(directory)
+        return self.find_packages(parent_directory) + [package_name]
 
     def _is_package(self, directory):
         return os.path.exists(os.path.join(directory, "__init__.py"))
