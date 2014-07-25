@@ -14,7 +14,7 @@ class LineFinder(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_FunctionDef(self, node):
-        print ast.dump(node, include_attributes=True)
+        # print ast.dump(node, include_attributes=True)
 
         if node.lineno == self.line_no:
             self.path = "%s.%s" % (self.class_name, node.name)
