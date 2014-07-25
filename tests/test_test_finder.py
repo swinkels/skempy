@@ -28,3 +28,14 @@ class TestLineFinder(unittest.TestCase):
         line_finder.visit(tree)
 
         self.assertEqual("TestMe.test_a", line_finder.path)
+
+    def test_find_method_by_cursor_position_in_method_def(self):
+        f = open("tests/source_code.py")
+        source_code = f.read()
+        f.close()
+
+        tree = ast.parse(source_code)
+        line_finder = test_finder.LineFinder(line_no=6)
+        line_finder.visit(tree)
+
+        self.assertEqual("TestMe.test_a", line_finder.path)
