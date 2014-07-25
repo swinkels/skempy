@@ -1,6 +1,8 @@
 import ast
 import os
 
+from module_path_finder import ModulePathFinder
+
 class LineFinder(ast.NodeVisitor):
 
     def __init__(self, line_no):
@@ -32,11 +34,10 @@ def get_path_in_code(source_code, line_no):
 
     return line_finder.path
 
-
 def get_path(file_name, line_no):
     f = open(file_name)
     source_code = f.read()
     f.close()
 
-    module_name = os.path.splitext(os.path.basename(file_name))[0]
-    return module_name + "." + get_path_in_code(source_code, line_no)
+    module_path = ModulePathFinder().find_path(file_name)
+    return module_path + '.' + get_path_in_code(source_code, line_no)

@@ -12,6 +12,9 @@ class TestTestFinder(unittest.TestCase):
         test_path = test_finder.get_path("tests/source_code.py", 7)
         self.assertEqual("source_code.TestMe.test_a", test_path)
 
+    def test_b(self):
+        test_path = test_finder.get_path("tests/package/source_code.py", 7)
+        self.assertEqual("package.source_code.TestMe.test_a", test_path)
 
 class TestLineFinder(unittest.TestCase):
 
