@@ -29,49 +29,34 @@ class TestTestFinder(unittest.TestCase):
 
 class TestLineFinder(unittest.TestCase):
 
-    def test_find_method_by_cursor_position_in_body(self):
+    def setUp(self):
         test_file_path = _get_file_path("source_code.py")
-        f = open(test_file_path)
-        source_code = f.read()
-        f.close()
+        with open(test_file_path) as f:
+            self.source_code = f.read()
 
-        tree = ast.parse(source_code)
+    def test_find_method_by_cursor_position_in_body(self):
+        tree = ast.parse(self.source_code)
         line_finder = test_finder.LineFinder(line_no=7)
         line_finder.visit(tree)
 
         self.assertEqual("TestMe.test_a", line_finder.path)
 
     def test_find_method_by_cursor_position_in_method_def(self):
-        test_file_path = _get_file_path("source_code.py")
-        f = open(test_file_path)
-        source_code = f.read()
-        f.close()
-
-        tree = ast.parse(source_code)
+        tree = ast.parse(self.source_code)
         line_finder = test_finder.LineFinder(line_no=6)
         line_finder.visit(tree)
 
         self.assertEqual("TestMe.test_a", line_finder.path)
 
     def test_find_method_by_cursor_position_in_class_def(self):
-        test_file_path = _get_file_path("source_code.py")
-        f = open(test_file_path)
-        source_code = f.read()
-        f.close()
-
-        tree = ast.parse(source_code)
+        tree = ast.parse(self.source_code)
         line_finder = test_finder.LineFinder(line_no=4)
         line_finder.visit(tree)
 
         self.assertEqual("TestMe", line_finder.path)
 
     def test_find_method_by_cursor_position_in_class_body_does_not_work(self):
-        test_file_path = _get_file_path("source_code.py")
-        f = open(test_file_path)
-        source_code = f.read()
-        f.close()
-
-        tree = ast.parse(source_code)
+        tree = ast.parse(self.source_code)
         line_finder = test_finder.LineFinder(line_no=5)
         line_finder.visit(tree)
 
