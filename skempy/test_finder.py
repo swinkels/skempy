@@ -1,7 +1,7 @@
 import ast
-import os
 
 from module_path_finder import ModulePathFinder
+
 
 class LineFinder(ast.NodeVisitor):
 
@@ -30,6 +30,7 @@ class LineFinder(ast.NodeVisitor):
         if not self.path:
             self.generic_visit(node)
 
+
 def get_path_in_code(source_code, line_no):
 
     tree = ast.parse(source_code)
@@ -37,6 +38,7 @@ def get_path_in_code(source_code, line_no):
     line_finder.visit(tree)
 
     return line_finder.path
+
 
 def get_path(file_name, line_no):
     with open(file_name) as f:
