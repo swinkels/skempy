@@ -6,6 +6,7 @@ import unittest
 
 from skempy import test_finder
 
+
 def _get_file_path(file_name):
     """Return the file path of the given file
 
@@ -68,10 +69,10 @@ class TestWithMultipleTestCaseFile(TestWithSingleTestCaseFile):
         self.test_file = "two_test_cases.py"
 
     def test_find_method_by_cursor_position_in_second_body(self):
-        self.assertEqual("AnotherTestMe.test_b", self.retrieve_test(line_no=14))
+        self.assertEqual("AnotherTestMe.test_b", self.retrieve_test(line_no=14))  # noqa
 
     def test_find_method_by_cursor_position_in_second_method_def(self):
-        self.assertEqual("AnotherTestMe.test_b", self.retrieve_test(line_no=13))
+        self.assertEqual("AnotherTestMe.test_b", self.retrieve_test(line_no=13))  # noqa
 
     def test_find_method_by_cursor_position_in_second_class_def(self):
         self.assertEqual("AnotherTestMe", self.retrieve_test(line_no=11))

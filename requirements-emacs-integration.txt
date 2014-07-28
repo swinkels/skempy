@@ -1,0 +1,11 @@
+Pymacs==0.25
+epc==0.0.5
+flake8==2.2.2
+jedi==0.8.1-final0
+mccabe==0.2.1
+pep8==1.5.7
+pyflakes==0.8.1
+rope==0.10.2
+ropemacs==0.7
+ropemode==0.2
+sexpdata==0.0.3
