@@ -39,9 +39,8 @@ def get_path_in_code(source_code, line_no):
     return line_finder.path
 
 def get_path(file_name, line_no):
-    f = open(file_name)
-    source_code = f.read()
-    f.close()
+    with open(file_name) as f:
+        source_code = f.read()
 
     module_path = ModulePathFinder().find_path(file_name)
     return module_path + '.' + get_path_in_code(source_code, line_no)
