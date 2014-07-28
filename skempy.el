@@ -1,17 +1,26 @@
+(defun sks-execute-flake8()
+  (interactive)
+  (let ((default-directory (projectile-project-root)))
+    (compile "find tests/ skempy/ -name '*.py' -exec flake8 {} \\;"))
+  )
+
 (defun sks-execute-python-test()
   (interactive)
   (let ((test-method (shell-command-to-string (format "skempy-find-test %s %d" (buffer-file-name) (line-number-at-pos)))))
     (compile (concat "python -m unittest " test-method)))
   )
-
+    
 (defvar registered-python-builds nil)
 
 (setq registered-python-builds
-  '(("sks-execute-python-test" . sks-execute-python-test)
-    ("projectile-test-project" . projectile-test-project)))
+      '(("flake8-all" . sks-execute-flake8)
+        ("unittest-all" . projectile-test-project)
+        ("unittest-current" . sks-execute-python-test))
+      )
 
 (defun sks-python-build()
-  (let ((python-build (ido-completing-read "Python test run: " (mapcar #'car registered-python-builds))))
+  (interactive)
+  (let ((python-build (ido-completing-read "Python project command: " (mapcar #'car registered-python-builds))))
     (call-interactively (cdr (assoc python-build registered-python-builds))))
   )
 
