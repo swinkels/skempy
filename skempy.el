@@ -4,10 +4,21 @@
     (compile (concat "python -m unittest " test-method)))
   )
 
+(defvar registered-python-builds nil)
+
+(setq registered-python-builds
+  '(("sks-execute-python-test" . sks-execute-python-test)
+    ("projectile-test-project" . projectile-test-project)))
+
+(defun sks-python-build()
+  (let ((python-build (ido-completing-read "Python test run: " (mapcar #'car registered-python-builds))))
+    (call-interactively (cdr (assoc python-build registered-python-builds))))
+  )
+
 (add-hook 'python-mode-hook
           '(lambda ()
              (local-set-key [C-f7] 'sks-execute-python-test)
-             (fset 'sks-build 'sks-execute-python-test)))
+             (fset 'sks-build 'sks-python-build)))
   
 (defun sks-recompile()
   "Redo the last compilation when appropriate.
@@ -28,3 +39,5 @@ by sks-build, otherwise it does nothing."
           (sks-build)
         (message "[sks-project] No *compilation* buffer exists and no sks-build command is defined"))))
   )
+
+
