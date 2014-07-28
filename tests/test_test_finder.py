@@ -55,9 +55,73 @@ class TestLineFinder(unittest.TestCase):
 
         self.assertEqual("TestMe", line_finder.path)
 
-    def test_find_method_by_cursor_position_in_class_body_does_not_work(self):
+    def test_find_method_by_cursor_position_in_class_body(self):
         tree = ast.parse(self.source_code)
         line_finder = test_finder.LineFinder(line_no=5)
         line_finder.visit(tree)
 
-        self.assertNotEqual("TestMe", line_finder.path)
+        self.assertEqual("TestMe", line_finder.path)
+
+
+class TestLineFinderForFileWithTwoTestCases(unittest.TestCase):
+
+    def setUp(self):
+        test_file_path = _get_file_path("two_test_cases.py")
+        with open(test_file_path) as f:
+            self.source_code = f.read()
+
+    def test_find_method_by_cursor_position_in_body(self):
+        tree = ast.parse(self.source_code)
+        line_finder = test_finder.LineFinder(line_no=7)
+        line_finder.visit(tree)
+
+        self.assertEqual("TestMe.test_a", line_finder.path)
+
+    def test_find_method_by_cursor_position_in_method_def(self):
+        tree = ast.parse(self.source_code)
+        line_finder = test_finder.LineFinder(line_no=6)
+        line_finder.visit(tree)
+
+        self.assertEqual("TestMe.test_a", line_finder.path)
+
+    def test_find_method_by_cursor_position_in_class_def(self):
+        tree = ast.parse(self.source_code)
+        line_finder = test_finder.LineFinder(line_no=4)
+        line_finder.visit(tree)
+
+        self.assertEqual("TestMe", line_finder.path)
+
+    def test_find_method_by_cursor_position_in_class_body(self):
+        tree = ast.parse(self.source_code)
+        line_finder = test_finder.LineFinder(line_no=5)
+        line_finder.visit(tree)
+
+        self.assertEqual("TestMe", line_finder.path)
+
+    def test_find_method_by_cursor_position_in_second_body(self):
+        tree = ast.parse(self.source_code)
+        line_finder = test_finder.LineFinder(line_no=14)
+        line_finder.visit(tree)
+
+        self.assertEqual("AnotherTestMe.test_b", line_finder.path)
+
+    def test_find_method_by_cursor_position_in_second_method_def(self):
+        tree = ast.parse(self.source_code)
+        line_finder = test_finder.LineFinder(line_no=13)
+        line_finder.visit(tree)
+
+        self.assertEqual("AnotherTestMe.test_b", line_finder.path)
+
+    def test_find_method_by_cursor_position_in_second_class_def(self):
+        tree = ast.parse(self.source_code)
+        line_finder = test_finder.LineFinder(line_no=11)
+        line_finder.visit(tree)
+
+        self.assertEqual("AnotherTestMe", line_finder.path)
+
+    def test_find_method_by_cursor_position_in_second_class_body(self):
+        tree = ast.parse(self.source_code)
+        line_finder = test_finder.LineFinder(line_no=12)
+        line_finder.visit(tree)
+
+        self.assertEqual("AnotherTestMe", line_finder.path)

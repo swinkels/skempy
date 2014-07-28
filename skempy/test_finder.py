@@ -11,6 +11,10 @@ class LineFinder(ast.NodeVisitor):
 
     def visit_ClassDef(self, node):
         self.class_name = node.name
+
+        if node.lineno <= self.line_no:
+            self.path = self.class_name
+
         self.generic_visit(node)
 
     def visit_FunctionDef(self, node):
