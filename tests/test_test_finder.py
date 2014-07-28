@@ -28,6 +28,11 @@ class TestTestFinder(unittest.TestCase):
         test_path = test_finder.get_path(test_file_path, 7)
         self.assertEqual("package.source_code.TestMe.test_a", test_path)
 
+    def test_find_module_in_python_file(self):
+        test_file_path = _get_file_path("source_code.py")
+        test_path = test_finder.get_path(test_file_path, 0)
+        self.assertEqual("source_code", test_path)
+
 
 class TestLineFinderBaseClass(unittest.TestCase):
 
