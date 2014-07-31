@@ -11,7 +11,7 @@ with open('LICENSE') as f:
 
 setup(
     name='skempy',
-    version='0.0.1',
+    version='1.0.0.dev0',
     description='Provides functionality to support Python development in Emacs',
     long_description=readme,
     author='P.C.J. Swinkels',
