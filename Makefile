@@ -3,4 +3,4 @@ init:
 
 .PHONY: tests
 tests:
-	nosetests tests
+	python -m unittest discover tests/
