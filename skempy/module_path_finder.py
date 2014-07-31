@@ -1,5 +1,6 @@
 import os
 
+
 class ModulePathFinder(object):
 
     def find_path(self, file_path):

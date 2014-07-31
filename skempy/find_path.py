@@ -2,6 +2,7 @@ from argparse import ArgumentParser
 
 from skempy.test_finder import get_path
 
+
 def main():
     parser = ArgumentParser(description="Retrieve the method in the given Python file and at the given line.")  # noqa
     parser.add_argument("file_path", help="Python file including path")
