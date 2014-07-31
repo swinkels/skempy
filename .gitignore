@@ -1,5 +1,6 @@
 *~
 *.pyc
 /build
+/docs/_*
 /skempy.egg-info
 /TAGS
