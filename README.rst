@@ -1,4 +1,4 @@
-This repo contains the Python package skempy, which provides functionality to
+This repo contains the Python package skempy, bwhich provides functionality to
 facilitate Python development in Emacs. At the moment, skempy provides a single
 script that returns the method at a given line in a given Python file. You can
 call this script from Emacs to, for example, retrieve the test method at point
@@ -55,8 +55,8 @@ The following snippet shows the output of skempy-find-test::
 Example Emacs integration
 -------------------------
 
-The oot of the repo contains the Emacs Lisp file skempy.el, which provides a
-function to retrieve th test method at point and eecutes that test as a compile
+The root of the repo contains the Emacs Lisp file skempy.el, which provides a
+function to retrieve the test method at point and executes that test as a compile
 command:
 
 .. sourcecode:: common-lisp
@@ -67,7 +67,7 @@ command:
       (compile (concat "python -m unittest " test-method)))
     )
 
-If you bind it to a key then running the testat point is a single keystroke
+If you bind it to a key then running the test at point is a single keystroke
 away, e.g.:
 
 .. sourcecode:: common-lisp
