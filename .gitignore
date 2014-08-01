@@ -1,5 +1,6 @@
 *~
 *.pyc
+/.tox
 /build
 /docs/_*
 /skempy.egg-info
