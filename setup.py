@@ -17,7 +17,7 @@ from setuptools import setup, find_packages
 version = 'no version defined'
 current_dir = os.path.dirname(__file__)
 with open(os.path.join(current_dir, "skempy", "__init__.py")) as f:
-    rx = re.compile('__version__ = (.*)')
+    rx = re.compile("__version__ = '(.*)'")
     for line in f:
         m = rx.match(line)
         if m:
