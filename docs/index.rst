@@ -13,7 +13,8 @@ Contents:
 
 
    introduction
-
+   intro-dev
+              
 Indices and tables
 ==================
 

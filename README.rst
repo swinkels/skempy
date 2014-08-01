@@ -6,25 +6,16 @@ and execute that test as a compile command.
 
 Installation
 ------------
- 
-First clone the skempy repo from Bitbucket::
 
-  $> git clone https://swinkels@bitbucket.org/swinkels/skempy
+In this section we describe how to install skempy as an end-user. If you want
+to easily fiddle around with the skempy source code, we refer to "For
+developers" section of the skempy documentation.
 
-If you have ssh access to that repo, you can also use the following command::
-    
-  $> git clone ssh://git@bitbucket.org/swinkels/skempy
+The easiest way to install skempy, is to directly install it from its GitHub
+repo. Execute the following command to install the bleeding-edge version from
+the master branch:
 
-Both commands create a copy of the repo in subdirectory skempy.
-
-Then, to actually install skempy, execute the following command::
-
-  $> cd skempy
-  $> pip install -e .
-
-When you pass option -e to pip, pip installs skempy in developer mode. This
-means that if you modify the skempy source code, the modifications are
-immediately accessible.
+  $> pip install https://swinkels@bitbucket.org/swinkels/skempy
 
 Usage
 -----
@@ -68,7 +59,7 @@ The oot of the repo contains the Emacs Lisp file skempy.el, which provides a
 function to retrieve th test method at point and eecutes that test as a compile
 command:
 
-.. sourcecode:: lisp
+.. sourcecode:: common-lisp
 
   (defun sks-execute-python-test()
     (interactive)
@@ -79,7 +70,7 @@ command:
 If you bind it to a key then running the testat point is a single keystroke
 away, e.g.:
 
-.. sourcecode:: lisp
+.. sourcecode:: common-lisp
 
   (add-hook 'python-mode-hook
             '(lambda () (local-set-key [C-f7] 'sks-execute-python-test)))
