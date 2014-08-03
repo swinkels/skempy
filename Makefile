@@ -6,4 +6,7 @@ tests:
 	python -m unittest discover tests/
 
 docs:
+	dexy reset ; dexy
+	cp output/_README.rst README.rst
 	cd docs ; make html
+

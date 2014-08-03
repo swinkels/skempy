@@ -1,0 +1,9 @@
+_README.rst|jinja:
+  - tests/source_code.py
+  - show-help.sh|shint:
+    - contents: 'skempy-find-test --help'
+  - show-version.sh|shint:
+    - contents: 'skempy-find-test --version'
+  - find-test.sh|shint:
+    - contents: 'skempy-find-test tests/source_code.py 7'
+    - shint: { 'use-wd' : False }

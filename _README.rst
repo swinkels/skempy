@@ -23,37 +23,18 @@ Usage
 When you install skempy, the command line script skempy-find-test is
 installed::
 
-  $ skempy-find-test --help
-  usage: skempy-find-test [-h] [--version] file_path line_no
-  
-  Retrieve the method in the given Python file and at the given line.
-  
-  positional arguments:
-    file_path   Python file including path
-    line_no     line number
-  
-  optional arguments:
-    -h, --help  show this help message and exit
-    --version   show program's version number and exit
+  {{ d['show-help.sh|shint']|indent(2) }}
   
 Assume you have the Python file tests/source_code.py:
 
 .. sourcecode:: python
   :linenos:
    
-  import unittest
-  
-  
-  class TestMe(unittest.TestCase):
-  
-      def test_a(self):
-          print"Hello World!"
-          return
+  {{ d['tests/source_code.py']|indent(2) }}
    
 The following snippet shows the output of skempy-find-test::
 
-  $ skempy-find-test tests/source_code.py 7
-  source_code.TestMe.test_a
+  {{ d['find-test.sh|shint']|indent(2) }}
 
 Example Emacs integration
 -------------------------

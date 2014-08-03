@@ -1,7 +1,10 @@
 *~
 *.pyc
+/.dexy
 /.tox
 /build
+/dist
 /docs/_*
+/output
 /skempy.egg-info
 /TAGS
