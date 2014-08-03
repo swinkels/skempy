@@ -1,4 +1,6 @@
-This repo contains the Python package skempy, bwhich provides functionality to
+.. {{ d['_warning-auto-generated.txt']|indent(3) }}
+
+This repo contains the Python package skempy, which provides functionality to
 facilitate Python development in Emacs. At the moment, skempy provides a single
 script that returns the method at a given line in a given Python file. You can
 call this script from Emacs to, for example, retrieve the test method at point

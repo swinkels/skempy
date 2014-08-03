@@ -1,4 +1,7 @@
-This repo contains the Python package skempy, bwhich provides functionality to
+.. WARNING: This file is the output of a Dexy run. Any edit you make to the
+   WARNING: current file will be lost after the next Dexy run.
+
+This repo contains the Python package skempy, which provides functionality to
 facilitate Python development in Emacs. At the moment, skempy provides a single
 script that returns the method at a given line in a given Python file. You can
 call this script from Emacs to, for example, retrieve the test method at point
