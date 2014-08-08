@@ -1,35 +1,27 @@
 # -*- coding: utf-8 -*-
 
 import ast
-import os
 import unittest
 
 from skempy import test_finder
 
-
-def _get_file_path(file_name):
-    """Return the file path of the given file
-
-    The given file is specified relative to the current file.
-
-    """
-    return os.path.join(os.path.dirname(__file__), file_name)
+from utils import get_abs_path
 
 
 class TestTestFinder(unittest.TestCase):
 
     def test_find_method_in_python_file_in_non_package_directory(self):
-        test_file_path = _get_file_path("source_code.py")
+        test_file_path = get_abs_path("source_code.py", __file__)
         test_path = test_finder.get_path(test_file_path, 7)
         self.assertEqual("source_code.TestMe.test_a", test_path)
 
     def test_find_method_in_python_file_in_package_directory(self):
-        test_file_path = _get_file_path("package/source_code.py")
+        test_file_path = get_abs_path("package/source_code.py", __file__)
         test_path = test_finder.get_path(test_file_path, 7)
         self.assertEqual("package.source_code.TestMe.test_a", test_path)
 
     def test_find_module_in_python_file(self):
-        test_file_path = _get_file_path("source_code.py")
+        test_file_path = get_abs_path("source_code.py", __file__)
         test_path = test_finder.get_path(test_file_path, 0)
         self.assertEqual("source_code", test_path)
 
@@ -37,7 +29,7 @@ class TestTestFinder(unittest.TestCase):
 class TestLineFinderBaseClass(unittest.TestCase):
 
     def retrieve_test(self, line_no):
-        test_file_path = _get_file_path(self.test_file)
+        test_file_path = get_abs_path(self.test_file, __file__)
         with open(test_file_path) as f:
             source_code = f.read()
 
