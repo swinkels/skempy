@@ -1,6 +1,7 @@
 *~
 *.pyc
 /.dexy
+/.ropeproject
 /.tox
 /build
 /dist
