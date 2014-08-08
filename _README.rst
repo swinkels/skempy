@@ -17,7 +17,7 @@ The easiest way to install skempy, is to directly install it from its GitHub
 repo. Execute the following command to install the bleeding-edge version from
 the master branch:
 
-  $> pip install https://swinkels@bitbucket.org/swinkels/skempy
+  $> pip install git+https://bitbucket.org/swinkels/skempy.git#egg=skempy
 
 Usage
 -----
@@ -47,16 +47,11 @@ command:
 
 .. sourcecode:: common-lisp
 
-  (defun sks-execute-python-test()
-    (interactive)
-    (let ((test-method (shell-command-to-string (format "skempy-find-test %s %d" (buffer-file-name) (line-number-at-pos)))))
-      (compile (concat "python -m unittest " test-method)))
-    )
+  {{ d['skempy.el|idio|t']['defun']|indent(2) }}
 
 If you bind it to a key then running the test at point is a single keystroke
 away, e.g.:
 
 .. sourcecode:: common-lisp
 
-  (add-hook 'python-mode-hook
-            '(lambda () (local-set-key [C-f7] 'sks-execute-python-test)))
+  {{ d['skempy.el|idio|t']['key-binding']|indent(2) }}

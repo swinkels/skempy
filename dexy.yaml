@@ -1,5 +1,6 @@
 _README.rst|jinja:
   - _warning-auto-generated.txt
+  - .el|idio|t
   - tests/source_code.py
   - show-help.sh|shint:
     - contents: 'skempy-find-test --help'

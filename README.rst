@@ -18,7 +18,7 @@ The easiest way to install skempy, is to directly install it from its GitHub
 repo. Execute the following command to install the bleeding-edge version from
 the master branch:
 
-  $> pip install https://swinkels@bitbucket.org/swinkels/skempy
+  $> pip install git+https://bitbucket.org/swinkels/skempy.git#egg=skempy
 
 Usage
 -----
