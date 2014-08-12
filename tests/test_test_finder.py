@@ -76,3 +76,16 @@ class TestWithMultipleTestCaseFile(TestWithSingleTestCaseFile):
 
     def test_find_method_by_cursor_position_in_second_class_body(self):
         self.assertEqual("AnotherTestMe", self.retrieve_test(line_no=12))
+
+
+class TestWithDocStrings(TestLineFinderBaseClass):
+
+    def __init__(self, *args, **kwargs):
+        super(TestLineFinderBaseClass, self).__init__(*args, **kwargs)
+        self.test_file = "methods_with_doc_strings.py"
+
+    def test_find_method_by_cursor_position_in_single_line_doc_string(self):
+        self.assertEqual("TestMe.test_a", self.retrieve_test(line_no=7))
+
+    def test_find_method_by_cursor_position_in_multiline_line_doc_string(self):
+        self.assertEqual("TestMe.test_b", self.retrieve_test(line_no=13))

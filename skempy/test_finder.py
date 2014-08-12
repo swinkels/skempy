@@ -20,12 +20,12 @@ class LineFinder(ast.NodeVisitor):
     def visit_FunctionDef(self, node):
         # print ast.dump(node, include_attributes=True)
 
-        if node.lineno == self.line_no:
+        max_lineno = node.lineno
+        for statement_node in node.body:
+            max_lineno = max(max_lineno, statement_node.lineno)
+
+        if node.lineno <= self.line_no <= max_lineno:
             self.path = "%s.%s" % (self.class_name, node.name)
-        else:
-            for statement_node in node.body:
-                if statement_node.lineno == self.line_no:
-                    self.path = "%s.%s" % (self.class_name, node.name)
 
         if not self.path:
             self.generic_visit(node)
