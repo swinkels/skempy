@@ -1,0 +1,16 @@
+- [ ] handle multiline method signatures
+- [ ] use a Emacs file-local variable to make README.rst read-only
+- [ ] remove the code duplication to extract the version number string
+- [ ] update the mr.bob template for Python
+- [X] remove all unnecessary content of skempy.el
+- [X] update requirements.txt (for the inclusion of Dexy)
+- [X] fix the relative paths in test_module_path_finder.py
+- [X] use Dexy to make the README automatically up-to-date
+- [X] update LICENSE
+- [X] create MANIFEST.in, see https://docs.python.org/2/distutils/sourcedist.html for details
+- [X] use tox when handy
+- [X] add the version number to the output of the skempy-find-path script 
+- [X] update the documentation to distinguish between users and developers
+- [X] improve Sphinx theme, see https://github.com/snide/sphinx_rtd_theme for the "Read the Docs" theme
+- [X] auto update Sphinx documentation version with skempy version
+- [X] improve __version__ handling to show current version instead of installed version
